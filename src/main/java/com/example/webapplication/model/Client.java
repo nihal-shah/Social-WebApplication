@@ -1,19 +1,20 @@
-package com.example.webapplication.databaseschema;
+package com.example.webapplication.model;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Client {
     @Id
     private Integer clientid;
-    @Column
     private String clientname;
-    @Column
     private String clientemail;
-    @Column
     private String clientpassword;
+    private Set<Integer> follower= new HashSet<Integer>();
+    private Set<Integer> following=new HashSet<Integer>();
 
     public Client() {
 
@@ -24,6 +25,15 @@ public class Client {
         this.clientname = clientname;
         this.clientemail = clientemail;
         this.clientpassword = clientpassword;
+
+    }
+
+    public Set<Integer> getFollower() {
+        return follower;
+    }
+
+    public void setFollower(Set<Integer> follower) {
+        this.follower = follower;
     }
 
     public Integer getClientid() {
@@ -56,5 +66,13 @@ public class Client {
 
     public void setClientpassword(String clientpassword) {
         this.clientpassword = clientpassword;
+    }
+
+    public Set<Integer> getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(Set<Integer> following) {
+        this.following = following;
     }
 }
